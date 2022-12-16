@@ -1,0 +1,40 @@
+#command=~/.local/bin/statusbar/$BLOCK_NAME
+separator_block_width=15
+markup=pango
+
+[brightness]
+command=echo $(brightnessctl -m | awk -F ',' '{print "Brightness: " $4}')
+interval=once
+signal=9
+
+[volume]
+#command=echo 🔈$(pulsemixer --get-volume | awk '{print $1"%"}') 
+command=~/.config/scripts/volume 
+interval=once
+signal=1
+
+[battery]
+command=~/.config/scripts/battery
+markup=pango
+interval=30
+LABEL=BAT⚡
+
+[cpu_temp]
+command=echo CPU🌡️ $(sensors | awk '/^Package/ {print $4}')
+interval=15
+
+[ram_use]
+command=free -h | awk '/^Mem:/ {print $1 $3 "/" $2}'
+interval=15
+
+[disk_usage]
+command=echo Disk:$(df -H / | awk '/^\/dev\/nvme0n1p2/ {print $3 "/" $2}')
+interval=30
+
+#[gputemp]
+#command=echo GPU🌡️ $(nvidia-smi | grep -o [0-9][0-9]C)
+#interval=5
+
+[clock]
+command=date '+%a %b %d, %I:%M%p'
+interval=5
