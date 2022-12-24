@@ -1,19 +1,25 @@
 #!/usr/bin/env sh
 
-#first configure disks, then run this script
+#first configure disk partitioning, then run this script
 
-#disks=$(sudo fdisk -l | grep -P "dev/[^:]+$");
-##arr partitions;
-#IFS=$'\n' read -d '' -a partitions <<< "$disks";
-##echo "$disks\n";
-#echo ${partitions[1]}
-#echo ${partitions[0]}
+if [[ $# != 2 ]]; then
+    echo not enough args
+    exit
+fi
 
-#Add number selection for linux partition to initialize filetype?
-#mkfs.ext4 /dev/root_partition
+efipart=$1
+rootpart=$2
 
-#mount /dev/root_partition /mnt
-#mount --mkdir /dev/efi_partition /mnt/boot
+read -p "Initialize EFI filesystem? [Y/n]" yn
+case $yn in
+    [Nn]* ) ;;
+    * ) mkfs.fat -F 32 $efipart;;
+esac
+
+mkfs.ext4 $rootpart
+
+mount $rootpart /mnt
+mount --mkdir $efipart /mnt/boot
 
 #update keys for live installer
 pacman --noconfirm -Sy archlinux-keyring
@@ -24,45 +30,6 @@ pacstrap -K /mnt base base-devel linux linux-firmware linux-headers networkmanag
 #generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab
 
-arch-chroot /mnt/
+cp stage2 /mnt/stage2
 
-#set the time zone
-ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
-#hwclock --systohc
-
-#generate locales
-echo en_US.UTF-8 UTF-8 > /etc/locale.gen
-locale-gen
-echo LANG=en_US.UTF-8 > /etc/locale.conf
-
-#Make hostname
-#prompt for input here
-read -p 'Enter hostname' hostnm 
-echo hostnm > /etc/hostname
-
-#enable networkmanager
-systemctl enable NetworkManager
-
-#install more packages
-#can't install yay as root, need to do after new user is made
-#git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-#yay -S $(cat packages.txt)
-
-#prompt for root password
-echo "pick your root password"
-passwd #$root_password
-
-#setup user account
-read -p 'Enter username' user
-useradd -mG wheel,uucp,network $user
-echo "Enter password for account $user"
-passwd $user
-
-#get grub downloaded
-pacman -S grub efibootmgr os-prober
-
-#Install grub
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-#might have to set GRUB_DISABLE_OS_PROBER=false in /etc/default/grub
-#echo GRUB_DISABLE_OS_PROBER=false >> /etc/default/grub
-grub-mkconfig -o /boot/grub/grub.cfg
+arch-chroot /mnt/ sh /mnt/stage2
