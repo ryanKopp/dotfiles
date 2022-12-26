@@ -1,13 +1,13 @@
 #!/usr/bin/env sh
 
 
-ln -s ./bash_profile ../.bash_profile
-ln -s ./bashrc ../.bashrc
-ln -s ./xinitrc ../.xinitrc
+ln -sf ~/dotfiles/bash_profile ~/.bash_profile
+ln -sf ~/dotfiles/bashrc ~/.bashrc
+ln -sf ~/dotfiles/xinitrc ~/.xinitrc
 
-ln -s ./alacritty/ ../.config/alacritty/
-ln -s ./fontconfig/ ../.config/fontconfig/
-ln -s ./i3/ ../.config/i3/
-ln -s ./i3blocks/ ../.config/i3blocks/
-ln -s ./nvim/ ../.config/nvim
-ln -s ./ranger/ ../.config/ranger/
+ln -sf ~/dotfiles/alacritty ~/.config/alacritty
+ln -sf ~/dotfiles/fontconfig ~/.config/fontconfig
+ln -sf ~/dotfiles/i3 ~/.config/i3
+ln -sf ~/dotfiles/i3blocks ~/.config/i3blocks
+ln -sf ~/dotfiles/nvim ~/.config/nvim
+ln -sf ~/dotfiles/ranger ~/.config/ranger
