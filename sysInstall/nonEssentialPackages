@@ -1,0 +1,36 @@
+brightnessctl # laptop brightness control
+
+discord
+spotify
+
+system-config-printer # printer setup help
+hplip # hp printer package
+cups # printer daemon, not like they all aren't
+
+intel-ucode
+intel-gpu-tools
+xf86-video-intel
+powertop
+
+amd-ucode
+
+picom # transparent terminal
+feh # use for wallpaper
+
+arandr
+
+sof-firmware # sound firmware
+
+piavpn-bin
+qbittorrent
+remmina
+freerdp # rdp dependency for remmina
+
+tumbler
+ffmpeg-thumbnailer
+
+smbclient # access netspace
+
+qdirstat # graphical storage use 
+
+
