@@ -1,0 +1,26 @@
+xorg/20-intel.conf 
+
+Section "Device"
+    Identifier "Intel Graphics"
+    Driver "modesetting"
+EndSection
+
+
+
+/etc/systemd/system/acpiPowerFix.service
+
+[Unit]
+Description=mask problematic acpi interrupt
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo mask > /sys/firmware/acpi/interrupts/gpe6E"
+
+[Install]
+WantedBy=multi-user.target
+
+.Xresources
+Xft.dpi:120
+
+
+
