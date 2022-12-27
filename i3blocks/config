@@ -4,11 +4,10 @@ markup=pango
 
 [brightness]
 command=echo $(brightnessctl -m | awk -F ',' '{print "Brightness: " $4}')
-interval=once
-signal=9
+interval=1
+#signal=2
 
 [volume]
-#command=echo 🔈$(pulsemixer --get-volume | awk '{print $1"%"}') 
 command=~/.config/scripts/volume 
 interval=once
 signal=1
@@ -28,7 +27,7 @@ command=free -h | awk '/^Mem:/ {print $1 $3 "/" $2}'
 interval=15
 
 [disk_usage]
-command=echo Disk:$(df -H / | awk '/^\/dev\/nvme0n1p2/ {print $3 "/" $2}')
+command=echo Disk:$(df -H / | awk '/^\/dev\/nvme0n1p4/ {print $3 "/" $2}')
 interval=30
 
 #[gputemp]

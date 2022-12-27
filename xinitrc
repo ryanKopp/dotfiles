@@ -38,7 +38,6 @@ fi
 
 # feh for wallpaper here
 #feh --bg-fill ~/Downloads/background.jpg
-xinput disable "ELAN2514:00 04F3:29F9"
 xset s off -dpms
 umonitor --listen --daemonize
 xset r rate 350 25 

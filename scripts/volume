@@ -2,20 +2,24 @@
 
 # Left click
 if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
-#  amixer -q sset Master 5%+
-# Middle click
-#elif [[ "${BLOCK_BUTTON}" -eq 2 ]]; then
-  amixer -q sset Master toggle
+  #  amixer -q sset Master 5%+
+  pamixer -t
+  # Middle click
+elif [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
+  #amixer -q sset Master toggle
+  pamixer -d 1
+
 # Right click
-#elif [[ "${BLOCK_BUTTON}" -eq 3 ]]; then
-#  amixer -q sset Master 5%-
+elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
+  #  amixer -q sset Master 5%-
+  pamixer -i 1
 fi
 
 statusLine=$(amixer get Master | tail -n 1)
-status=$(echo "${statusLine}" | grep -wo "on")
-volume=$(echo "${statusLine}" | awk -F ' ' '{print $5}' | tr -d '[]%')
+status=$(pamixer --get-mute)
+volume=$(pamixer --get-volume)
 
-if [[ "${status}" == "on" ]]; then
+if [[ "${status}" == "false" ]]; then
   echo "Volume:     ${volume}% "
   #echo 
   #echo \#00FF00
