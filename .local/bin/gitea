@@ -1,0 +1,1 @@
+git remote add origin [gitea@git.nekrotik.xyz:45703]:nekrotik/$1.git
