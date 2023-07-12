@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Scroll up
 if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
