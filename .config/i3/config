@@ -171,16 +171,16 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 9 px or 9 ppt
-        bindsym j resize grow height 9 px or 9 ppt
-        bindsym k resize shrink height 9 px or 9 ppt
-        bindsym l resize grow width 9 px or 9 ppt
+        bindsym h resize shrink width 5 px or 5 ppt
+        bindsym j resize grow height 5 px or 5 ppt
+        bindsym k resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
 
         # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 9 px or 9 ppt
-        bindsym Down resize grow height 9 px or 9 ppt
-        bindsym Up resize shrink height 9 px or 9 ppt
-        bindsym Right resize grow width 9 px or 9 ppt
+        bindsym Left resize shrink width 5 px or 5 ppt
+        bindsym Down resize grow height 5 px or 5 ppt
+        bindsym Up resize shrink height 5 px or 5 ppt
+        bindsym Right resize grow width 5 px or 5 ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -213,9 +213,8 @@ bar {
 		background #285597
 	}
 }
-#exec --no-startup-id feh --bg-fill ~/.config/miku.jpg
-#exec --no-startup-id feh --bg-scale ~/.config/terry.jpg
 #exec --no-startup-id feh --bg-scale ~/Documents/pictures/stableDiffusion/underground_meat_worms__CGI_Seed-7985550_Steps-15_Guidance-8.6.png
 exec --no-startup-id feh --bg-scale ~/nextcloud/wallpapers/miku.jpg
-#no picom for power savings
-#exec --no-startup-id picom --config ~/.config/picom/picom.conf 
+
+#no picom on laptop for power savings
+exec --no-startup-id picom --config ~/.config/picom/picom.conf 
