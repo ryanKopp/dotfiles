@@ -48,12 +48,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 3%- && pkil
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id alacritty 
-#i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 bindsym $mod+c exec --no-startup-id firefox
 bindsym $mod+s exec --no-startup-id spotify
-bindsym $mod+a exec --no-startup-id autorandr -c
 
 bindsym --release $mod+Shift+s exec --no-startup-id scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
@@ -192,15 +190,15 @@ bindsym $mod+r mode "resize"
 
 # multiple monitor workspace handling
 
-workspace 1 output DP-2 HDMI-0 
-workspace 2 output DP-2 HDMI-0
-workspace 3 output DP-2 HDMI-0
-workspace 4 output DP-2 HDMI-0
-workspace 5 output DP-2 HDMI-0
-workspace 6 output  HDMI-0 DP-2
-workspace 7 output  HDMI-0 DP-2
-workspace 8 output  HDMI-0 DP-2
-workspace 9 output  HDMI-0 DP-2
+workspace  1 output DP-2 HDMI-0 
+workspace  2 output DP-2 HDMI-0
+workspace  3 output DP-2 HDMI-0
+workspace  4 output DP-2 HDMI-0
+workspace  5 output DP-2 HDMI-0
+workspace  6 output HDMI-0 DP-2
+workspace  7 output HDMI-0 DP-2
+workspace  8 output HDMI-0 DP-2
+workspace  9 output HDMI-0 DP-2
 workspace 10 output HDMI-0 DP-2
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -217,5 +215,4 @@ bar {
 #exec --no-startup-id feh --bg-scale ~/Documents/pictures/stableDiffusion/underground_meat_worms__CGI_Seed-7985550_Steps-15_Guidance-8.6.png
 exec --no-startup-id feh --bg-scale ~/nextcloud/wallpapers/redHorse.jpg
 exec --no-startup-id nextcloud
-#no picom on laptop for power savings
 exec --no-startup-id picom --config ~/.config/picom/picom.conf 
