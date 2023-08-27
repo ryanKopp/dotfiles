@@ -2,25 +2,25 @@
 separator_block_width=15
 markup=pango
 
-#[brightness]
-#command=brightness
-#interval=once
-#signal=2
+[brightness]
+command=brightness
+interval=once
+signal=2
 
 [volume]
 command=volume 
 interval=once
 signal=1
 
-#[battery]
-#command=battery
-#markup=pango
-#interval=30
-#LABEL=BAT⚡
+[battery]
+command=battery
+markup=pango
+interval=30
+LABEL=BAT⚡
 
 [cpu_temp]
-#command=echo CPU🌡️ $(sensors | awk '/^Package/ {print $4}')
-command=echo CPU🌡️ $(sensors | awk '/^Tctl:/ {print $2}')
+command=echo CPU🌡️ $(sensors | awk '/^Package/ {print $4}')
+#command=echo CPU🌡️ $(sensors | awk '/^Tctl:/ {print $2}')
 interval=15
 
 [ram_use]
@@ -28,12 +28,12 @@ command=free -h | awk '/^Mem:/ {print $1 $3 "/" $2}'
 interval=15
 
 [disk_usage]
-command=echo Disk:$(df -H / | awk '/^\/dev\/nvme0n1p4/ {print $3 "/" $2}')
+command=echo Disk:$(df -H / | awk '/^\/dev\/nvme0n1p5/ {print $3 "/" $2}')
 interval=30
 
-[gputemp]
-command=echo GPU🌡️ $(nvidia-smi | grep -o [0-9][0-9]C)
-interval=5
+#[gputemp]
+#command=echo GPU🌡️ $(nvidia-smi | grep -o [0-9][0-9]C)
+#interval=5
 
 [clock]
 command=date '+%a %b %d, %I:%M%p'
