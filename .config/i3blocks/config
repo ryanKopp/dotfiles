@@ -8,7 +8,6 @@ interval=once
 signal=1
 
 [cpu_temp]
-#command=echo CPU🌡️ $(sensors | awk '/^Package/ {print $4}')
 command=echo CPU🌡️ $(sensors | awk '/^Tctl:/ {print $2}')
 interval=15
 
