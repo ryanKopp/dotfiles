@@ -2,21 +2,10 @@
 separator_block_width=15
 markup=pango
 
-#[brightness]
-#command=brightness
-#interval=once
-#signal=2
-
 [volume]
-command=volume 
+command=~/.local/bin/statusbar/$BLOCK_NAME
 interval=once
 signal=1
-
-#[battery]
-#command=battery
-#markup=pango
-#interval=30
-#LABEL=BAT⚡
 
 [cpu_temp]
 #command=echo CPU🌡️ $(sensors | awk '/^Package/ {print $4}')
