@@ -7,12 +7,12 @@ if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
   # Middle click
 elif [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
   #amixer -q sset Master toggle
-  pamixer -i 2
+  pamixer -i 2 --allow-boost --gamma 5
 
 # Right click
 elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
   #  amixer -q sset Master 5%-
-  pamixer -d 2
+  pamixer -d 2 --allow-boost --gamma 5
 fi
 
 statusLine=$(amixer get Master | tail -n 1)
