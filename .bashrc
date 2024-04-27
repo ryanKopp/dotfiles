@@ -18,6 +18,8 @@ alias la='ls -a --color=auto'
 alias ll='ls -la --color=auto'
 alias plexssh='ssh ryan@nekrotik.xyz'
 alias rootssh='ssh root@nekrotik.xyz'
+alias mntiphone='sudo ifuse -o allow_other /mnt/iphone'
+alias convertheic='for file in *.HEIC; do heif-convert $file ${file/%.HEIC/.jpg}; done'
 alias vim='nvim'
 alias sudo='sudo '
 alias record='ffmpeg -video_size 2560x1600 -framerate 30 -f x11grab -i :0.0+0,0 -f pulse -ac 2 -i default output.mp4'
@@ -28,6 +30,4 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
       && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
       && yay -Syyu --noconfirm'
 
-
 PS1='[\u@\h \W]\$ '
-
