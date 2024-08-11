@@ -215,7 +215,8 @@ bar {
 	}
 }
 #exec --no-startup-id feh --bg-scale ~/Documents/pictures/stableDiffusion/underground_meat_worms__CGI_Seed-7985550_Steps-15_Guidance-8.6.png
-exec --no-startup-id feh --bg-scale ~/nextcloud/wallpapers/redHorse.jpg
+#exec --no-startup-id feh --bg-scale ~/nextcloud/wallpapers/redHorse.jpg
+exec --no-startup-id feh --bg-scale ~/nextcloud/wallpapers/tool_wallpaper.jpg
 exec --no-startup-id nextcloud
 #no picom on laptop for power savings
 exec --no-startup-id picom --config ~/.config/picom/picom.conf 
