@@ -28,7 +28,7 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
       && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
       && yay -Syyu --noconfirm'
 
-alias aiStart='/home/ryan/chatgpt/oobabooga_linux/start_linux.sh'
+alias aiStart='/home/ryan/chatgpt/text-generation-webui/start_linux.sh --listen'
 
 PS1='[\u@\h \W]\$ '
 
