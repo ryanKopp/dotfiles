@@ -1,0 +1,50 @@
+#pulseaudio {
+  color: #ffffff;
+/*  background-color: #2b2b2b;
+  min-width: 100px;
+  border-right: 1px solid #666666;
+  border-left: 1px solid #666666;
+  margin-left: 25px;
+  padding-left: 10px;*/
+}
+
+#pulseaudio.muted {
+  color: #ffff00;
+}
+
+window#waybar {
+  background-color: #2b2b2b;
+  color: #ffffff;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+}
+
+/* all the borders */
+#pulseaudio,
+#custom-cpu_temp,
+#custom-ram_use,
+#custom-disk_use,
+#custom-gpu_temp,
+#clock,
+#tray,
+#custom-power
+{
+  border-left: 1px solid #666666;
+  border-right: 1px solid #666666;
+  padding: 0px 5px;
+}
+
+#custom-power {
+  padding-right: 0px;
+  margin-right: 0px;
+  border-right: 0px;
+}
+
+
+* {
+  font-family: 'Monospace';
+}
