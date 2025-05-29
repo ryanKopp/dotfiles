@@ -24,10 +24,10 @@
   //      "cpu",
   //      "memory",
 //        "temperature",
-   //     "backlight",
-//        "battery",
+        "backlight",
         //"battery#bat2",
         "pulseaudio",
+        "battery",
         "custom/cpu_temp",
         "custom/ram_use",
         "custom/disk_use",
@@ -100,7 +100,9 @@
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": ["", "", "", "", "", "", "", "", ""],
+        "smooth-scrolling-threshold": 2,
+        "scroll-step": 3
     },
     "battery": {
         "states": {
@@ -118,7 +120,6 @@
         "format-icons": ["", "", "", "", ""]
     },
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
         "format":       "Volume:     {volume}% ",
         "format-muted": "Volume: off({volume}%)",
         "format-bluetooth": "{volume}% {icon} {format_source}",
@@ -138,7 +139,8 @@
         //"on-click": "pavucontrol"
         "on-scroll-up": "pamixer -i 2 --gamma 5 --allow-boost",
         "on-scroll-down": "pamixer -d 2 --gamma 5 --allow-boost",
-        "on-click": "pamixer -t"
+        "on-click": "pamixer -t",
+        "smooth-scrolling-threshold": 2 
     },
     "custom/media": {
         "format": "{icon} {text}",
@@ -154,23 +156,43 @@
     },
     "custom/cpu_temp": {
         "format": "CPU🌡️ {}",
-        "interval": 15,
-        "exec": "sensors | awk '/^Tctl:/ {print $2}'"
+        "interval": 5,
+        "exec": "sensors | awk '{if ($0 ~ /^Package/) {print $4} else if ($0 ~ /^Tctl:/) {print $2}}'",
+        "signal": 4,
+        "on-click": "pkill -RTMIN+4 waybar",
+        "on-scroll-up": "pkill -RTMIN+4 waybar",
+        "on-scroll-down": "pkill -RTMIN+4 waybar",
+        "smooth-scrolling-threshold": 2 
     },
     "custom/ram_use": {
         "format": "{}",
-        "interval": 15,
-        "exec": "free -h --si | awk '/^Mem:/ {print $1 $3 \"/\" $2}'"
+        "interval": 5,
+        "exec": "free -h --si | awk '/^Mem:/ {print $1 $3 \"/\" $2}'",
+        "signal": 5,
+        "on-click": "pkill -RTMIN+5 waybar",
+        "on-scroll-up": "pkill -RTMIN+5 waybar",
+        "on-scroll-down": "pkill -RTMIN+5 waybar",
+        "smooth-scrolling-threshold": 2 
     },
     "custom/disk_use": {
         "format": "Disk: {}",
-        "interval": 15,
-        "exec": "df -H / | awk '/^\\/dev/ {print $3 \"/\" $2}'"
+        "interval": 5,
+        "exec": "df -H / | awk '/^\\/dev/ {print $3 \"/\" $2}'",
+        "signal": 6,
+        "on-click": "pkill -RTMIN+6 waybar",
+        "on-scroll-up": "pkill -RTMIN+6 waybar",
+        "on-scroll-down": "pkill -RTMIN+6 waybar",
+        "smooth-scrolling-threshold": 2 
     },
     "custom/gpu_temp": {
         "format": "GPU🌡️ {}",
         "interval": 10,
-        "exec": "nvidia-smi | grep -o [0-9][0-9]C"
+        "exec": "nvidia-smi | grep -o [0-9][0-9]C",
+        "signal": 7,
+        "on-click": "pkill -RTMIN+7 waybar",
+        "on-scroll-up": "pkill -RTMIN+7 waybar",
+        "on-scroll-down": "pkill -RTMIN+7 waybar",
+        "smooth-scrolling-threshold": 2 
     },
     "custom/power": {
         "format" : "⏻ ",

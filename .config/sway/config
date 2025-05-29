@@ -20,10 +20,11 @@ set $menu wmenu-run
 
 #Have gaps set so this shouldn't matter but just in case
 font pango:monospace 12
+seat seat0 xcursor_theme Adwaita-dark
 
 ### Output configuration
 #
-output * bg ~/Nextcloud/wallpapers/redHorse.jpg stretch
+output * bg ~/nextcloud/wallpapers/redHorse.jpg stretch
 
 # set gaps
 for_window [class=".*"] border pixel 2
@@ -32,12 +33,24 @@ gaps outer 0
 smart_borders on
 for_window [class="Nextcloud*"] floating disable
 
+bindswitch lid:on output eDP-1 disable
+bindswitch lid:off output eDP-1 enable
+### Output configuration
 #
-# Example configuration:
-#
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
+output * bg ~/nextcloud/wallpapers/redHorse.jpg stretch
+output DP-5 position 2560,0
+output eDP-1 position 0,0
+
+workspace 1  output eDP-1 DP-5
+workspace 2  output eDP-1 DP-5
+workspace 3  output eDP-1 DP-5
+workspace 4  output eDP-1 DP-5
+workspace 5  output eDP-1 DP-5
+workspace 6  output DP-5 eDP-1
+workspace 7  output DP-5 eDP-1
+workspace 8  output DP-5 eDP-1
+workspace 9  output DP-5 eDP-1
+workspace 10 output DP-5 eDP-1
 
 ### Idle configuration
 #
@@ -65,6 +78,11 @@ for_window [class="Nextcloud*"] floating disable
 #
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
+
+input "1267:12689:ELAN0E03:00_04F3:3191_Touchpad" {
+    tap enabled
+    natural_scroll enabled
+}
 
 ### Key bindings
 #
@@ -170,7 +188,7 @@ for_window [class="Nextcloud*"] floating disable
     bindsym $mod+space focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    #bindsym $mod+a focus parent
 #
 # Scratchpad:
 #
@@ -226,12 +244,14 @@ bindsym $mod+r mode "resize"
     bindsym XF86AudioPrev exec --no-startup-id dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 
     # Special key to take a screenshot with grim --
-    # TODO FIX SCREENSHOTTING
-    bindsym $mod+Shift+s exec grim
+    bindsym $mod+Shift+s exec ~/.config/sway/screenshot.sh
 
 # Run things on startup
 exec waybar
 exec nextcloud --background
 exec nm-applet --indicator
 
+
 include /etc/sway/config.d/*
+
+#bindsym $mod+a exec '~/.config/sway/lid-switch.sh'

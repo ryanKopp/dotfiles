@@ -7,8 +7,9 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./nvidia.nix
+      #./hardware-configuration.nix
+      #./nvidia.nix
+      ./laptop-hardware.nix
     ];
 
   # Bootloader.
@@ -22,7 +23,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   programs.sway.enable = true;
-  #programs.waybar.enable = true;
   xdg.portal = {
     config = {
       sway = {
@@ -85,7 +85,7 @@
     noto-fonts-cjk-sans
     noto-fonts-emoji
     font-awesome
-    (nerdfonts.override { fonts = ["FiraCode"]; })
+    nerd-fonts.fira-code
   ]; 
 
     #programs.xwayland.enable = true;
@@ -110,6 +110,8 @@
           vim-fugitive
           #mason-nvim
           #mason-lspconfig-nvim
+          lsp-zero-nvim
+          nvim-lspconfig
           nvim-cmp
           cmp-buffer
           cmp-path
@@ -148,8 +150,12 @@
     lua-language-server
     discord
     xfce.thunar
+    wl-clipboard
+    #screenshot combo breaker
+    grim
+    slurp
+    swappy
     #neovim
-    #vimPlugins.packer-nvim
   #  wget
   ];
 
