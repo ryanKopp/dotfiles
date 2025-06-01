@@ -45,6 +45,9 @@
     pulse.enable = true;
   };
 
+  services.gvfs.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Phoenix";
 
@@ -87,9 +90,6 @@
     font-awesome
     nerd-fonts.fira-code
   ]; 
-
-    #programs.xwayland.enable = true;
-    #services.dbus.enable = true;
 
   programs.neovim = {
     enable = true;
@@ -138,6 +138,7 @@
     firefox
     alacritty
     networkmanagerapplet
+    #gnome-keyring
     pamixer
     alsa-utils
     pavucontrol
@@ -149,12 +150,22 @@
     #nvim lang servers
     lua-language-server
     discord
+    
+    #File explorer
     xfce.thunar
+    xfce.thunar-volman
+    xfce.tumbler
+    ffmpegthumbnailer
+    polkit_gnome
+
+
     wl-clipboard
     #screenshot combo breaker
     grim
     slurp
     swappy
+    remmina
+    tmux
     #neovim
   #  wget
   ];
