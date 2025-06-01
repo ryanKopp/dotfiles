@@ -20,7 +20,7 @@ set $menu wmenu-run
 
 #Have gaps set so this shouldn't matter but just in case
 font pango:monospace 12
-seat seat0 xcursor_theme Adwaita-dark
+seat seat0 xcursor_theme Adwaita
 
 ### Output configuration
 #
@@ -254,4 +254,4 @@ exec nm-applet --indicator
 
 include /etc/sway/config.d/*
 
-#bindsym $mod+a exec '~/.config/sway/lid-switch.sh'
+bindsym $mod+a exec '~/.config/sway/lid-switch.sh'
