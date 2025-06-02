@@ -19,9 +19,16 @@
   networking.hostName = "nixOS"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+  programs.tmux = {
+    enable = true;
+    shortcut = "a";
+    plugins = with pkgs; [
+        tmuxPlugins.pain-control
+        tmuxPlugins.resurrect
+        tmuxPlugins.continuum
+    ];
+  };
+
   programs.sway.enable = true;
   xdg.portal = {
     config = {
@@ -36,7 +43,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   
-  #hardware.pulseaudio.enable = true;
+  security.polkit.enable = true;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -83,14 +90,6 @@
 # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    iosevka
-    noto-fonts-cjk-sans
-    noto-fonts-emoji
-    font-awesome
-    nerd-fonts.fira-code
-  ]; 
-
   programs.neovim = {
     enable = true;
     configure = {
@@ -100,7 +99,6 @@
         '';
       packages.myVimPackage = with pkgs.vimPlugins; {
         start = [ 
-          #packer-nvim
           onedark-nvim
           harpoon
           telescope-nvim
@@ -108,8 +106,6 @@
           nvim-treesitter
           undotree
           vim-fugitive
-          #mason-nvim
-          #mason-lspconfig-nvim
           lsp-zero-nvim
           nvim-lspconfig
           nvim-cmp
@@ -122,54 +118,48 @@
     };
   };
 
-    #hardware.graphics.enable32Bit = true;
-    #hardware.pulseaudio.support32Bit = true;
+  fonts.packages = with pkgs; [
+      iosevka
+      noto-fonts-cjk-sans
+      noto-fonts-emoji
+      font-awesome
+      nerd-fonts.fira-code
+  ]; 
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #vim
-    waybar
     adwaita-icon-theme
-    xdg-desktop-portal-gtk
-    #i3blocks
-    lm_sensors 
-    firefox
     alacritty
-    networkmanagerapplet
-    #gnome-keyring
-    pamixer
     alsa-utils
-    pavucontrol
-    spotify
+    discord
+    firefox
+    gnome-disk-utility
+    lm_sensors 
+    networkmanagerapplet
     nextcloud-client
-        #steam
-    git
-    gcc
+    pamixer
+    pavucontrol
+    remmina
+    spotify
+    waybar
+    xdg-desktop-portal-gtk
+
     #nvim lang servers
     lua-language-server
-    discord
-    
+
     #File explorer
     xfce.thunar
     xfce.thunar-volman
     xfce.tumbler
-    ffmpegthumbnailer
-    polkit_gnome
 
-
-    wl-clipboard
     #screenshot combo breaker
     grim
     slurp
     swappy
-    remmina
-    tmux
-    #neovim
-  #  wget
+    wl-clipboard
+    
+    # Dev tools
+    git
   ];
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -182,12 +172,6 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
