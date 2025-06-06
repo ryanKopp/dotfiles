@@ -22,10 +22,6 @@ set $menu wmenu-run
 font pango:monospace 12
 seat seat0 xcursor_theme Adwaita
 
-### Output configuration
-#
-output * bg ~/nextcloud/wallpapers/redHorse.jpg stretch
-
 # set gaps
 for_window [class=".*"] border pixel 2
 gaps inner 6
@@ -250,7 +246,6 @@ bindsym $mod+r mode "resize"
 exec waybar
 exec nextcloud --background
 exec nm-applet --indicator
-
 
 include /etc/sway/config.d/*
 
