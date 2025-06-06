@@ -11,7 +11,10 @@ export PATH="/home/ryan/.cargo/bin:$PATH"
 export PATH="/home/ryan/.local/bin:$PATH"
 
 bind -x '"\C-f":"tmux-sessionizer"'
-alias config='/usr/bin/git --git-dir=/home/ryan/.cfg/ --work-tree=/home/ryan'
+
+# Stow commands
+alias restow='stow -R --dir=/home/ryan/code/dotfiles --target=/home/ryan .'
+alias unstow='stow -D --dir=/home/ryan/code/dotfiles .'
 
 alias ls='ls --color=auto'
 alias la='ls -a --color=auto'
@@ -20,6 +23,7 @@ alias plexssh='ssh ryan@nekrotik.xyz'
 alias rootssh='ssh root@nekrotik.xyz'
 alias vim='nvim'
 alias sudo='sudo '
+# TODO - fix this to support wayland
 alias record='ffmpeg -video_size 2560x1600 -framerate 30 -f x11grab -i :0.0+0,0 -f pulse -ac 2 -i default output.mp4'
 alias ua-update-all='export TMPFILE="$(mktemp)"; \
     sudo true; \
@@ -27,8 +31,6 @@ alias ua-update-all='export TMPFILE="$(mktemp)"; \
       && sudo mv /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist-backup \
       && sudo mv $TMPFILE /etc/pacman.d/mirrorlist \
       && yay -Syyu --noconfirm'
-
-alias aiStart='/home/ryan/chatgpt/text-generation-webui/start_linux.sh --listen'
 
 PS1='[\u@\h \W]\$ '
 
