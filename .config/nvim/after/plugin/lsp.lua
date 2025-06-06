@@ -1,5 +1,6 @@
 local lsp = require("lsp-zero")
 --lsp.preset("recommended")
+require('mason').setup()
 
 -- Fix Undefined global 'vim'
 lsp.configure('lua_ls', {
