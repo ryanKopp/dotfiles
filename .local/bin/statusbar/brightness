@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Scroll up
+if [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
+  brightnessctl -e set +3% > /dev/null
+
+# Scroll down
+elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
+  brightnessctl -e set 3%- > /dev/null 
+fi
+
+echo $(brightnessctl -m | awk -F ',' '{print "Brightness: " $4}')

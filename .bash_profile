@@ -6,5 +6,5 @@
 export HISTSIZE=5000
 
 if [ -z "$TMUX" ]  && [ -z "$SSH_TTY" ]; then
-    sway
+    startx
 fi

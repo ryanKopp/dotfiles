@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+
+# Left click
+if [[ "${BLOCK_BUTTON}" -eq 1 ]]; then
+  #  amixer -q sset Master 5%+
+  pamixer -t
+  # Middle click
+elif [[ "${BLOCK_BUTTON}" -eq 4 ]]; then
+  #amixer -q sset Master toggle
+  pamixer -i 2 --gamma 5 --allow-boost
+
+# Right click
+elif [[ "${BLOCK_BUTTON}" -eq 5 ]]; then
+  #  amixer -q sset Master 5%-
+  pamixer -d 2 --gamma 5 --allow-boost
+fi
+
+statusLine=$(amixer get Master | tail -n 1)
+status=$(pamixer --get-mute)
+volume=$(pamixer --get-volume)
+
+if [[ "${status}" == "false" ]]; then
+  echo "Volume:     ${volume}% "
+  #echo 
+  #echo \#00FF00
+else
+  echo "Volume: off(${volume}%)"
+  echo 
+  echo \#FFFF00
+fi
