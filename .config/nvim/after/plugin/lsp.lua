@@ -3,7 +3,7 @@ local lsp = require("lsp-zero")
 require('mason').setup()
 
 -- Fix Undefined global 'vim'
-lsp.configure('lua_ls', {
+vim.lsp.config('lua_ls', {
     settings = {
         Lua = {
             diagnostics = {
